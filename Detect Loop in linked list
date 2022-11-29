@@ -1,0 +1,35 @@
+Solution1:
+
+class Solution {
+    //Function to check if the linked list has a loop.
+    public static boolean detectLoop(Node head){
+        // Add code here
+        HashSet<Node> hs=new HashSet<Node>();
+        while(head.next!=null){
+            if(hs.contains(head))
+            return true;
+            else
+            hs.add(head);
+            head=head.next;
+        }
+        return false;
+    }
+}
+Solution 2:
+
+class Solution {
+    //Function to check if the linked list has a loop.
+    public static boolean detectLoop(Node head){
+        // Add code here
+        Node slow=head;
+        Node fast=head;
+        while(fast.next!=null&&fast.next.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast)
+            return true;
+        }
+        return false;
+    }
+}
