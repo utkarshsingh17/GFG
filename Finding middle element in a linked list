@@ -1,0 +1,25 @@
+class Solution
+{
+    int getMiddle(Node head)
+    {
+         // Your code here.
+         int c=0;
+         Node slow=head;
+         Node fast=head;
+         Node start=head;
+         while(start!=null)
+         {
+             c++;
+             start=start.next;
+         }
+         while(fast.next!=null&&fast.next.next!=null)
+         {
+             slow=slow.next;
+             fast=fast.next.next;
+         }
+         if(c%2==1)
+         return slow.data;
+         else
+         return slow.next.data;
+    }
+}
