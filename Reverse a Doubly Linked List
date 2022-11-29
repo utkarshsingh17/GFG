@@ -1,0 +1,19 @@
+public static Node reverseDLL(Node  head)
+{
+    //Your code here
+    Node cur=head;
+    Node previous=null;
+    if(head==null||head.next==null)
+    {
+        return head;
+    }
+
+    while(cur!=null)
+    {
+        previous=cur.prev;
+        cur.prev=cur.next;
+        cur.next=previous;
+        cur=cur.prev;
+    }
+    return previous.prev;
+}
