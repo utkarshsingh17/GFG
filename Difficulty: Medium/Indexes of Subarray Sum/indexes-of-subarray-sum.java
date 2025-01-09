@@ -37,21 +37,16 @@ class Solution {
     static ArrayList<Integer> subarraySum(int[] arr, int target) {
         // code here
         HashMap<Integer,Integer> map=new HashMap<>();
-        int preSum=0;
         map.put(0,0);
+        int sum=0;
         for(int i=0;i<arr.length;i++){
-            preSum+=arr[i];
-            int req=preSum-target;
+            sum+=arr[i];
+            int req=sum-target;
             if(map.containsKey(req)){
-                ArrayList<Integer> ans=new ArrayList<>();
-                ans.add(map.get(req)+1);
-                //System.out.println(map+"::");
-                ans.add(i+1);
-                return ans;
+                return new ArrayList<>(Arrays.asList(map.get(req)+1,i+1));
             }
-            
-            map.put(preSum,i+1);
-            
+            if(map.containsKey(sum)==false)
+            map.put(sum,i+1);
         }
         return new ArrayList<>(Arrays.asList(-1));
     }
